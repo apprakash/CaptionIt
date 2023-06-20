@@ -111,21 +111,31 @@ export default function Home() {
       </div>
 
       {isLoad ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 items-center justify-center h-full py-1">
-          <div>
-            <div className="max-w-4xl h-full flex justify-center">
-              <div className="max-w-xl h-full">{thumbs}</div>
-            </div>
-          </div>
-          <div>
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 items-center justify-center h-full py-1">
             <div>
-              <p>{caption}</p>
+              <div className="max-w-4xl h-full flex justify-center">
+                <div className="max-w-xl h-full">{thumbs}</div>
+              </div>
             </div>
-            <div className="mt-10">
-              <p>{formatApiResult(completion)}</p>
+            <div>
+              <div>
+                <p>{caption}</p>
+              </div>
+              <div className="mt-10">
+                <p>{formatApiResult(completion)}</p>
+              </div>
             </div>
           </div>
-        </div>
+          <div className="flex justify-center mt-4 pb-2">
+            <button
+              className="bg-primary font-semibold py-2 px-4 rounded border border-black"
+              onClick={() => setIsLoad(false)}
+            >
+              Upload a new photo
+            </button>
+          </div>
+        </>
       ) : (
         <div className="flex flex-col items-center justify-center flex-grow">
           <div

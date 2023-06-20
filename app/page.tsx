@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import { FaCopy, FaGithub, FaTwitter } from "react-icons/fa";
 import { SiLinkedin } from "react-icons/si";
 import { useDropzone } from "react-dropzone";
 import React, { useEffect, useState } from "react";
@@ -78,6 +78,11 @@ export default function Home() {
     </div>
   ));
 
+  const handleOnClick = () => {
+    setCaption("");
+    setIsLoad(false);
+  };
+
   const formatApiResult = (result: any) => {
     if (result) {
       const formattedResult = result.replace(/-/g, "<p class='mb-5'>");
@@ -130,7 +135,7 @@ export default function Home() {
           <div className="flex justify-center mt-4 pb-2">
             <button
               className="bg-primary font-semibold py-2 px-4 rounded border border-black"
-              onClick={() => setIsLoad(false)}
+              onClick={handleOnClick}
             >
               Upload a new photo
             </button>
@@ -149,9 +154,9 @@ export default function Home() {
         </div>
       )}
 
-      <div className="mt-auto flex items-center justify-between font-mono text-sm lg:flex border-t border-gray-400 p-2 md:p-4">
+      <div className="mt-auto flex items-center justify-between font-mono text-sm lg:flex border-t border-gray-400 p-1 md:p-4">
         <p className="text-center">© 2023 CaptionIt. All rights reserved.</p>
-        <div className="flex items-center space-x-2 md:space-x-4">
+        <div className="flex items-center pt-4 space-x-2 md:space-x-4">
           <Link href="https://twitter.com/prakash_poorna">
             <div className="w-6 h-6 md:w-8 md:h-8">
               <FaTwitter />

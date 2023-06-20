@@ -70,7 +70,7 @@ export default function Home() {
   }, [files]);
 
   const thumbs = files.map((file) => (
-    <div>
+    <div key={file.name}>
       <img
         src={file.preview}
         onLoad={() => URL.revokeObjectURL(file.preview)}

@@ -39,7 +39,6 @@ export default function Home() {
     } else {
       extractedText = result.trim();
     }
-    setIsLoad(false);
     setCaption(extractedText);
     console.log("calling open ai ");
     complete(extractedText);
@@ -95,68 +94,52 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col p-24 bg-gradient-to-r from-rose-100 to-teal-100">
-      <div className="z-10 w-full max-w-7xl items-center justify-between font-mono text-sm lg:flex  border-b border-gray-400">
-        <p className="fixed top-0 flex w-full max-w-6xl pb-6 pt-8 pl-10 font-bold text-4xl">
+    <main className="flex flex-col min-h-screen p-5 bg-gradient-to-r from-rose-100 to-teal-100">
+      <div className="z-10 w-full flex items-center justify-between font-mono text-sm lg:flex border-b border-gray-400">
+        <p className="top-0 flex w-full max-w-6xl pb-6 font-bold text-4xl">
           CaptionIt
         </p>
       </div>
-      <div className="flex items-center justify-center p-5 text-center h-full w-full">
-        <p className="text-5xl font-semibold">Generate social media captions</p>
-      </div>
-      <div className="flex items-center justify-center text-center h-full w-full">
+
+      <div className="flex flex-col items-center justify-center mt-2">
+        <p className="text-5xl font-semibold mb-5">
+          Generate social media captions
+        </p>
         <p className="text-xl">
-          Simply upload your image, and let CaptionIt work its magic.{" "}
+          Simply upload your image, and let CaptionIt work its magic.
         </p>
       </div>
 
-      <div className="flex items-center justify-center text-center h-full w-full">
-        <div
-          {...getRootProps()}
-          className="p-20 mt-10 border-2 rounded-4 border-black border-dashed outline-none transition border-opacity-24 max-w-xl text-black text-center text-20"
-        >
-          <input {...getInputProps()} />
-          <p>Drag and drop some files here or click to select files</p>
-          <em>(Only *.jpeg and *.png images will be accepted)</em>
-        </div>
-      </div>
-
-      <div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            marginLeft: "100px",
-            width: "50%",
-            marginTop: "20px",
-          }}
-        >
-          <div>{thumbs}</div>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            marginRight: "50px",
-            marginTop: "20px",
-          }}
-        >
+      {isLoad ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 items-center justify-center h-full py-1">
           <div>
-            {isLoad ? (
-              <div>Generating image description...</div>
-            ) : (
-              <p> {caption}</p>
-            )}
+            <div className="max-w-4xl h-full flex justify-center">
+              <div className="max-w-xl h-full">{thumbs}</div>
+            </div>
           </div>
           <div>
-            <p>{formatApiResult(completion)}</p>
+            <div>
+              <p>{caption}</p>
+            </div>
+            <div className="mt-10">
+              <p>{formatApiResult(completion)}</p>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center flex-grow">
+          <div
+            {...getRootProps()}
+            className="p-20 border-2 rounded-4 border-black border-dashed outline-none transition border-opacity-24 max-w-xl text-black text-center text-20"
+          >
+            <input {...getInputProps()} />
+            <p>Drag and drop some files here or click to select files</p>
+            <em>(Only *.jpeg and *.png images will be accepted)</em>
+          </div>
+        </div>
+      )}
 
-      <div className="fixed bottom-2 left-0 right-0 flex items-center justify-between font-mono text-sm lg:flex border-t border-gray-400 p-2 md:p-4">
+      <div className="mt-auto flex items-center justify-between font-mono text-sm lg:flex border-t border-gray-400 p-2 md:p-4">
         <p className="text-center">© 2023 CaptionIt. All rights reserved.</p>
         <div className="flex items-center space-x-2 md:space-x-4">
           <Link href="https://twitter.com/prakash_poorna">

@@ -83,20 +83,58 @@ export default function Home() {
     setIsLoad(false);
   };
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+  };
+
   const formatApiResult = (result: any) => {
     if (result) {
-      const formattedResult = result.replace(/-/g, "<p class='mb-5'>");
-      const lineSpacingStyle = {
-        lineHeight: "1.5",
-      };
-      return (
-        <div
-          style={lineSpacingStyle}
-          dangerouslySetInnerHTML={{ __html: formattedResult }}
-        />
-      );
+      const formattedResult = result
+        .split("$")
+        .map((item: string, index: number, array: string[]) => {
+          if (index == 0 ){
+            return null;
+          }
+          if (index === array.length) {
+            return (
+              <div key={index}>
+                <p className="mb-5">{item}</p>
+              </div>
+            );
+          }
+          return (
+            <div key={index} className="flex items-center justify-between">
+              <p className="mb-5">
+                {item.trim().length > 0 ? item : ""}
+                <button
+                  className="font-semibold rounded"
+                  onClick={() => handleCopy(item)}
+                >
+                  <FaCopy />
+                </button>
+              </p>
+            </div>
+          );
+        });
+
+      return <div>{formattedResult}</div>;
     }
   };
+
+  // const formatApiResult = (result: any) => {
+  //   if (result) {
+  //     const formattedResult = result.replace(/-/g, "<p class='mb-5'>");
+  //     const lineSpacingStyle = {
+  //       lineHeight: "1.5",
+  //     };
+  //     return (
+  //       <div
+  //         style={lineSpacingStyle}
+  //         dangerouslySetInnerHTML={{ __html: formattedResult }}
+  //       />
+  //     );
+  //   }
+  // };
 
   return (
     <main className="flex flex-col min-h-screen p-5 bg-gradient-to-r from-rose-100 to-teal-100 text-black">

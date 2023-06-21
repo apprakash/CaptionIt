@@ -99,7 +99,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen p-5 bg-gradient-to-r from-rose-100 to-teal-100">
+    <main className="flex flex-col min-h-screen p-5 bg-gradient-to-r from-rose-100 to-teal-100 text-black">
       <div className="z-10 w-full flex items-center justify-between font-mono text-sm lg:flex border-b border-gray-400">
         <p className="top-0 flex w-full max-w-6xl pb-6 font-bold text-4xl">
           CaptionIt

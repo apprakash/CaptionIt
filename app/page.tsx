@@ -92,7 +92,7 @@ export default function Home() {
       const formattedResult = result
         .split("$")
         .map((item: string, index: number, array: string[]) => {
-          if (index == 0 ){
+          if (index == 0) {
             return null;
           }
           if (index === array.length) {
@@ -116,25 +116,9 @@ export default function Home() {
             </div>
           );
         });
-
       return <div>{formattedResult}</div>;
     }
   };
-
-  // const formatApiResult = (result: any) => {
-  //   if (result) {
-  //     const formattedResult = result.replace(/-/g, "<p class='mb-5'>");
-  //     const lineSpacingStyle = {
-  //       lineHeight: "1.5",
-  //     };
-  //     return (
-  //       <div
-  //         style={lineSpacingStyle}
-  //         dangerouslySetInnerHTML={{ __html: formattedResult }}
-  //       />
-  //     );
-  //   }
-  // };
 
   return (
     <main className="flex flex-col min-h-screen p-5 bg-gradient-to-r from-rose-100 to-teal-100 text-black">

@@ -1,0 +1,32 @@
+{
+    "theme_color": "#f6b135",
+    "background_color": "#9b9b9b",
+    "display": "browser",
+    "scope": "/",
+    "start_url": "/https://caption-86pbvbgfe-apprakash.vercel.app/",
+    "name": "Caption It ",
+    "short_name": "Caption-It ",
+    "description": "Generates Social Media Captions ",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

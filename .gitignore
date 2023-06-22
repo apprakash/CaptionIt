@@ -33,3 +33,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/sw.js
+public/sw.js.map
+.gitignore
+public/workbox-8f0e986c.js
+public/workbox-8f0e986c.js.map
